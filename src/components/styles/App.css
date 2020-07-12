@@ -22,7 +22,7 @@ h1,h2,h3,h4,h5{
 }
 
 .App__container{
-    max-width: 1280px;
+    max-width: 90%;
     margin: 1em auto;
     display: grid;
     grid-template-columns: 50% 50%;
@@ -45,4 +45,26 @@ input[type="time"] {
 
 input{
     margin-bottom: 2em;
+}
+
+.alert-error{
+    text-align: center;
+    background-color: white;
+    color: #E10600;
+    font-size: 1.3em;
+    border-radius: .2em;
+    font-weight: 700;
+}
+
+.alert-error, .alert-send{
+    text-align: center;
+    background-color: white;
+    color: #E10600;
+    font-size: 1.3em;
+    border-radius: .2em;
+    font-weight: 700;
+}
+
+.alert-send{
+    color: #2CC84D;
 }
