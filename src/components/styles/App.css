@@ -67,3 +67,10 @@ input{
     background-color: #E10600 !important;
     border-color: #E10600 !important;
 }
+
+
+@media only screen and (max-width:767px){
+    .App__container{
+        display: block;
+    }   
+}
