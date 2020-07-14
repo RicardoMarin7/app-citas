@@ -26,6 +26,7 @@ h1,h2,h3,h4,h5{
     margin: 1em auto;
     display: grid;
     grid-template-columns: 50% 50%;
+    grid-column-gap: 1.5em;
 }
 
 label{
@@ -47,15 +48,6 @@ input{
     margin-bottom: 2em;
 }
 
-.alert-error{
-    text-align: center;
-    background-color: white;
-    color: #E10600;
-    font-size: 1.3em;
-    border-radius: .2em;
-    font-weight: 700;
-}
-
 .alert-error, .alert-send{
     text-align: center;
     background-color: white;
@@ -63,8 +55,15 @@ input{
     font-size: 1.3em;
     border-radius: .2em;
     font-weight: 700;
+    margin:0;
 }
 
 .alert-send{
     color: #2CC84D;
+}
+
+
+.btn-danger{
+    background-color: #E10600 !important;
+    border-color: #E10600 !important;
 }

@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 import {v4 as UUID} from 'uuid'
+import PropTypes from 'prop-types'
 
 const Form = ({crearCita}) =>{
 
     //State de citas -> aqui se guardan los valores del formulario o su state
     const [cita,setCita] = useState({
-        id:UUID(),
+        id:'',
         paciente:'',
         acompanante:'',
         fecha:'',
@@ -45,17 +46,19 @@ const Form = ({crearCita}) =>{
         //Si ya se envio el formulario mostramos que se envio
         setSend(true)
         //Lo desaparecemos
-
-        //Crear Cita
-        crearCita(cita)
-
         setTimeout(() => {
             setSend(false)
         }, 3000);
 
+        //Asignamos ID
+
+        cita.id = UUID()
+        //Crear Cita
+        crearCita(cita)
+
+     
         //Reiniciamos el formulario y asignamos otro id
         setCita({
-            id:UUID(),
             paciente:'',
             acompanante:'',
             fecha:'',
@@ -127,6 +130,10 @@ const Form = ({crearCita}) =>{
             </form>
         </React.Fragment>
     )
+}
+
+Form.propTypes = {
+    crearCita: PropTypes.func.isRequired
 }
 
 export default Form

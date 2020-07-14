@@ -1,11 +1,29 @@
-import React,{ useState } from 'react';
+import React,{ useState, useEffect } from 'react'
 import Form from './Form'
+import Cita from './Cita'
 
 import './styles/App.css'
 
 function App() {
 
-  const [citas,setCitas] = useState([])
+  // Citas en local storage
+  let citasIniciales = JSON.parse(localStorage.getItem('citas'))
+  if(!citasIniciales){
+    citasIniciales = []
+  }
+
+  const [citas,setCitas] = useState(citasIniciales)
+  const titulo = citas.length === 0 ? 'No Hay Citas' : 'Administra Tus Citas'
+
+  useEffect( () => {
+    if(citasIniciales){
+      localStorage.setItem('citas', JSON.stringify(citas))
+    }else{
+      localStorage.setItem('citas', JSON.stringify([]))
+    }
+  },[citas,citasIniciales])
+
+  
 
   //Funcion que tome las citas actuales y agrege una 
   const crearCita = cita =>{
@@ -13,8 +31,10 @@ function App() {
       ...citas,
       cita
     ])
+  }
 
-    console.log(citas)
+  const eliminarCita = id =>{
+    setCitas(citas.filter( cita => cita.id !== id ))
   }
 
 
@@ -28,8 +48,16 @@ function App() {
            crearCita={crearCita}
           />
         </div>
+
         <div className="App__appointments">
-          <h2>Citas</h2>
+          <h2>{titulo}</h2>
+          {citas.map(cita =>(
+            <Cita 
+              eliminarCita = {eliminarCita}
+              key={cita.id}
+              cita={cita}
+            />
+          ))}
         </div>
       </div>
     </main>
